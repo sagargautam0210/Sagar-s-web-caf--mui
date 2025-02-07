@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { MenuList } from "../data/Data";
+import "../styles/LayoutStyle.css";
 import {
   Alert,
   Box,
@@ -19,13 +20,13 @@ const Menu = () => {
 
   // Function to close the notification Snackbar
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setNotificationMsg(false);
   };
 
-  // Access the addCart function from CartContext
+  // Accessing the addCart function from CartContext
   const { addCart } = useContext(CartContext);
 
   // Function to handle adding a menu item to the cart
@@ -46,31 +47,52 @@ const Menu = () => {
           gap: 3,
         }}
       >
+        {/* Looping the menu items */}
         {MenuList.map((menu) => (
           <Card key={menu.id} sx={{ maxWidth: 300, minHeight: 250 }}>
+            {/* Menu Item*/}
             <CardActionArea>
+              {/* Image of an item */}
               <CardMedia
                 component="img"
                 src={menu.image}
                 sx={{
-                  height: 300, 
-                  objectFit: "cover", 
+                  height: 300,
+                  objectFit: "cover",
                   width: "100%",
                 }}
               />
+              {/* Content of the Image */}
               <CardContent
                 sx={{ display: "flex", flexDirection: "column", gap: 1 }}
               >
-                <Typography
-                  sx={{ fontWeight: "bold" }}
-                  variant="h5"
-                  gutterBottom
-                >
-                  {menu.name}
-                </Typography>
+                {/* Name of the item and info for stock */}
+                <Box sx={{ display: "flex" ,width: "100%", alignItems: "center"}}>
+                  <Typography
+                    sx={{ fontWeight: "bold" }}
+                    variant="h5"
+                    gutterBottom
+                  >
+                    {menu.name}
+                  </Typography>
+                  <Typography 
+                  className={`${menu.inStock ? "inStock" : "outOfStock"}`}
+                   sx={{
+                    ml : 1.6,
+                    border: 0.3,
+                    height: 1,
+                    padding: 0.2,
+                    fontSize: 9,
+                    mb: 1,
+                  }}>
+                    {menu.inStock ? "Good to Go" : "Restocking"}
+                  </Typography>
+                </Box>
+                {/* Description of the items and all the details  */}
                 <Typography variant="body2" sx={{ fontWeight: "bold" }}>
                   {menu.description}
                 </Typography>
+                {/* Price of the item */}
                 <Button
                   onClick={() => handleAddToCart(menu)}
                   variant="outlined"
@@ -83,13 +105,14 @@ const Menu = () => {
           </Card>
         ))}
       </Box>
-      <Snackbar 
-        open={notificationMsg} 
-        autoHideDuration={3000} 
+      {/* Notification when the item is added to the cart "Added to cart" */}
+      <Snackbar
+        open={notificationMsg}
+        autoHideDuration={3000}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right', 
+          vertical: "bottom",
+          horizontal: "right",
         }}
       >
         <Alert onClose={handleClose} severity="success">
@@ -100,4 +123,4 @@ const Menu = () => {
   );
 };
 
-export default Menu; 
+export default Menu;

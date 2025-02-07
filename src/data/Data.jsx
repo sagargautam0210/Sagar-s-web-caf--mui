@@ -141,7 +141,7 @@ export const MenuList = [
     description:
       "A rich and flavorful traditional dish with a blend of spices and ingredients, offering a hearty and satisfying experience.",
     image: mas,
-    price: "2,683.95",
+    price: 2683,
     inStock: true,
   },
 ];

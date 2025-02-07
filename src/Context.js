@@ -22,7 +22,7 @@ const CartProvider = ({ children }) => {
       ];
     });
   };
-
+  
   return (
     <CartContext.Provider value={{ cartItems, addCart, removeCart }}>
       {children}

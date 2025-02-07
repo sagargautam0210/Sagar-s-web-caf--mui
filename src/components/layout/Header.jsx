@@ -14,7 +14,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
 import "../../styles/HeaderStyle.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   let [mobileMenu, setMobileMenu] = useState(false);

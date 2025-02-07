@@ -30,6 +30,7 @@ const About = () => {
     <Grid container spacing={4} alignItems="center">
       <Grid item xs={12} md={6}>
         <img
+        //image used in about us section
           src={myImage}
           alt="Sagar at Sagar's Web Café"
           style={{ width: "70%", borderRadius: "8px" }}

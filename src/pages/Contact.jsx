@@ -59,6 +59,15 @@ const ContactUs = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                label="Address"
+                variant="outlined"
+                fullWidth
+                required
+                type="address"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
                 label="Phone Number"
                 variant="outlined"
                 fullWidth
